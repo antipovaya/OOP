@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import domen.Bottle;
+import domen.HotDrink;
 import domen.Product;
 import servis.CoinDispenser;
 import servis.Holder;
@@ -15,10 +16,15 @@ public class App {
         Product product2 = new Product("Кока-колла", 50, 1);
         Product product3 = new Product("Милка", 100, 2);
         Product product4 = new Bottle("Акваминерале", 110, 3, 0.5);
+        Product product5 = new HotDrink("Латте", 150, 4, 90);
+        Product product6 = new HotDrink("Раф", 180, 5, 95);
+
         product.add(product1);
         product.add(product2);
         product.add(product3);
         product.add(product4);
+        product.add(product5);
+        product.add(product6);
         Holder holder1 = new Holder();
         CoinDispenser dispenser1 = new CoinDispenser();
         VendingMachine machine = new VendingMachine(holder1, dispenser1, product);
