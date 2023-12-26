@@ -1,5 +1,7 @@
 package Classes;
 
+import Interfaces.iActorBehaviour;
+
 /**
  * Класс Акционный клиент
  */
@@ -72,6 +74,9 @@ public class PromotionalClient extends Actor {
         return numberOfParticipants;
     }
 
-
+    public String returnOrder(){
+        return super.name + " клиент вернул заказ";
+    }
+    
    
 }

@@ -1,7 +1,9 @@
 package Classes;
 
+import Interfaces.iActorBehaviour;
 
-public class OrdinaryClient extends Actor {
+
+public class OrdinaryClient extends Actor  {
     public OrdinaryClient(String name) {
         super(name);
         
@@ -36,4 +38,15 @@ public class OrdinaryClient extends Actor {
         
         super.name = name;
     }
+
+    public String returnOrder(){
+        return super.name + " клиент вернул заказ";
+    }
+
+
+
+
+
+  
+    
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import Interfaces.iActorBehaviour;
 import Interfaces.iMarketBehaviour;
+import Interfaces.iReturnOrder;
 
 import Interfaces.iQueueBehaviour;
 
@@ -44,13 +45,22 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
         realeaseFromQueue();
     }
 
+
+    
+    
+
     @Override
     public void giveOrder() {
         for (iActorBehaviour actor : queue) {
             if (actor.isMakeOrder()) {
                 actor.setTakeOrder(true);
                 System.out.println(actor.geActor().getName() + " клиент получил свой заказ ");
-            }
+                if(actor.geActor() instanceof OrdinaryClient){
+                    //System.out.println(actor.geActor().getName() + " клиент вернул заказ ");
+                    System.out.println(actor.geActor().returnOrder());
+                   
+                }
+            } 
         }
 
     }

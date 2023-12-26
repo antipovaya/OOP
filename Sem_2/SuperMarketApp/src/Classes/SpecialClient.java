@@ -1,5 +1,7 @@
 package Classes;
 
+import Interfaces.iActorBehaviour;
+
 public class SpecialClient extends Actor {
 
     private int idVIP;
@@ -78,5 +80,11 @@ public class SpecialClient extends Actor {
         
         super.name = name;
     }
+    
+    public String returnOrder(){
+        return super.name + " клиент вернул заказ";
+    }
+
+
 }
 
