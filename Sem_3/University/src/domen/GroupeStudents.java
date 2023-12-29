@@ -3,7 +3,7 @@ package domen;
 import java.util.Iterator;
 import java.util.List;
 
-public class GroupeStudents implements Iterable<Student>{
+public class GroupeStudents implements Iterable<Student>, Comparable<GroupeStudents>{
     private int numberGroupe;
     List<Student> students;
 
@@ -29,14 +29,28 @@ public class GroupeStudents implements Iterable<Student>{
 
     @Override
     public String toString() {
-        
-        return String.format("ID группы - %d", getNumberGroupe());
+        String stringstudents = new String();
+        for (Student student : students){
+            stringstudents += student.toString() + "\n";
+        }
+        // return String.format("ID группы - %d", getNumberGroupe());
+        return String.format("ID группы - %d, Количество студентов: %d\n%s\n", getNumberGroupe(), students.size());
     }
 
     @Override
     public Iterator<Student> iterator() {
        
         return new StudentIterator(students);
+    }
+
+    @Override
+    public int compareTo(GroupeStudents o) {
+       
+        if (this.students.size() < o.students.size()) return 1;
+        else if (this.students.size() > o.students.size()) return -1;
+        if (this.numberGroupe < o.numberGroupe) return 1;
+        else if (this.numberGroupe > o.numberGroupe) return -1;
+        else return 0;
     }
 
     
