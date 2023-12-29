@@ -34,7 +34,7 @@ public class GroupeStudents implements Iterable<Student>, Comparable<GroupeStude
             stringstudents += student.toString() + "\n";
         }
         // return String.format("ID группы - %d", getNumberGroupe());
-        return String.format("ID группы - %d, Количество студентов: %d\n%s\n", getNumberGroupe(), students.size());
+        return String.format("ID группы - %d, количество студентов: %d\n%s\n", getNumberGroupe(), students.size(), stringstudents);
     }
 
     @Override

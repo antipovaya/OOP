@@ -45,8 +45,12 @@ public class StudentStream implements Iterable<GroupeStudents>{
 
     @Override
     public String toString() {
+        String groupeString = new String();
+        for (GroupeStudents groupeStudents : faculties){
+            groupeString += groupeStudents.toString();
+        }
         
-        return String.format("ID потока - %d", getNumberFaculty());
+        return String.format("\nНомер потока - %d, количество групп: %d\n\n%s", getNumberFaculty(), faculties.size(), groupeString);
     }
     
     @Override

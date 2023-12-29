@@ -4,12 +4,13 @@ import java.util.List;
 
 import domen.GroupeStudents;
 import domen.Student;
+import domen.StudentStream;
 
 public class App {
     public static void main(String[] args) throws Exception {
         // System.out.println("Hello, World!");
 
-        Student student1 = new Student("Инга", 22);
+        Student student1 = new Student("Инга", 22); // Создаю студентов, экземпляров класса Student
         Student student2 = new Student("Виктор", 21);
         Student student3 = new Student("Тимофей", 20);
         Student student4 = new Student("Анатолий", 19);
@@ -34,7 +35,7 @@ public class App {
         Student student23 = new Student("Ульяна", 20);
         Student student24 = new Student("Екатерина", 21);
 
-        List<Student> students1 = new ArrayList<>();
+        List<Student> students1 = new ArrayList<>(); // создаю списки и добавляю туда студентов
         students1.add(student6);
         students1.add(student4);
         students1.add(student3);
@@ -45,20 +46,62 @@ public class App {
         List<Student> students2 = new ArrayList<>();
         students2.add(student24);
         students2.add(student7);
+        students2.add(student8);
+        students2.add(student10);
+        students2.add(student9);
 
-        GroupeStudents studentsGroupe = new GroupeStudents(5281, students);
+        List<Student> students3 = new ArrayList<>();
+        students3.add(student23);
+        students3.add(student11);
+        students3.add(student13);
+        students3.add(student12);
+        students3.add(student14);
+        students3.add(student15);
+        students3.add(student16);
+        students3.add(student18);
 
-        for (Student student : studentsGroupe) {
-            System.out.println(student);
+        List<Student> students4 = new ArrayList<>();
+        students4.add(student22);
+        students4.add(student17);
+        students4.add(student19);
+        students4.add(student20);
+        students4.add(student21);
+       
+
+
+        GroupeStudents studentsGroupe1 = new GroupeStudents(5281, students1); // создаю группы, экземпляры класса GroupeStudents
+        GroupeStudents studentsGroupe2 = new GroupeStudents(2294, students2);
+        GroupeStudents studentsGroupe3 = new GroupeStudents(5287, students3);
+        GroupeStudents studentsGroupe4 = new GroupeStudents(2293, students4);
+
+    //     for (Student student : studentsGroupe) {
+    //         System.out.println(student);
             
-        }
-        Collections.sort(studentsGroupe.getStudents());
-        System.out.println();
-        for (Student student : studentsGroupe) {
-            System.out.println(student);
+    //     }
+    //     Collections.sort(studentsGroupe.getStudents());
+    //     System.out.println();
+    //     for (Student student : studentsGroupe) {
+    //         System.out.println(student);
             
+    //     }
+    // }
+        StudentStream studentStream = new StudentStream(); // добавляю в поток группы
+        studentStream.add(studentsGroupe1);
+        studentStream.add(studentsGroupe2);
+        studentStream.add(studentsGroupe3);
+        studentStream.add(studentsGroupe4);
+    
+
+
+        System.out.println(studentStream); // вывод потока без сортировки
+
+        Collections.sort((List<GroupeStudents>) studentStream.getFaculties()); // сортировка потока групп по колличеству
+        for(GroupeStudents groupe : studentStream.getFaculties()){
+            Collections.sort((List<Student>) groupe.getStudents()); // сортировка студентов в рамках группы по возрасту и id
         }
+        System.out.println(studentStream); // вывод потока с сортировкой
     }
 
     
-}
+
+}   
