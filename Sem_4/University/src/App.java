@@ -8,6 +8,7 @@ import domen.PersonComparator;
 import domen.Student;
 import domen.StudentStream;
 import domen.Teacher;
+import service.TeacherService;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -104,15 +105,51 @@ public class App {
         }
         System.out.println(studentStream); // вывод потока с сортировкой
 
+
+
+        
+
         Teacher teacher = new Teacher("Зинаида", 50, "Доцент");
         Teacher teacher1 = new Teacher("Валентин", 52, "Доцент");
-        System.out.println(new PersonComparator<Teacher>().compare(teacher, teacher1));
-        System.out.println(new PersonComparator<Student>().compare(student10, student13));
+        Teacher teacher2 = new Teacher("Константин", 59, "Доцент");
+        // System.out.println(new PersonComparator<Teacher>().compare(teacher, teacher1));
+        // System.out.println(new PersonComparator<Student>().compare(student10, student13));
 
         AccountControler controler = new AccountControler();
         controler.paySalary(teacher, 30000);
-        // controler.paySalary(student1, 40000); подчеркивает красным, так как мы убрали в контролере пресон и поставили тичер
+        System.out.println();
+        // controler.paySalary(student1, 40000); // подчеркивает красным, так как мы убрали в контролере Person и поставили Teacher
 
+        TeacherService tService = new TeacherService();
+        tService.create("Давид", 55);
+        tService.create("Анна", 39);
+        tService.create("Олег", 39);
+        tService.create("Владислав", 39);
+
+        System.out.println(tService.getAll()); // вывод листа преподаватлей без сортировки
+        tService.sortByFamily(); // сортировка
+        System.out.println(tService.getAll()); // вывод листа преподаватeлей, отсортированных по имени (PersonComparator)
+
+        List<Student> studentsAverage = new ArrayList<>(); // список студентов для подсчета среднего возраста
+        studentsAverage.add(student1);
+        studentsAverage.add(student2);
+        studentsAverage.add(student3);
+        studentsAverage.add(student4);
+        studentsAverage.add(student5);
+        studentsAverage.add(student6);
+
+        List<Teacher> teacherAverage = new ArrayList<>(); // список преподавателей для подсчета среднего возраста
+        teacherAverage.add(teacher);
+        teacherAverage.add(teacher1);
+        teacherAverage.add(teacher2);
+
+
+        controler.AverageAge(studentsAverage);
+        System.out.println("Средний возраст студентов: " + controler.getAverageAge());
+        
+
+        controler.AverageAge(teacherAverage);
+        System.out.println("Средний возраст преподавателей: " + controler.getAverageAge());
 
     }
 
