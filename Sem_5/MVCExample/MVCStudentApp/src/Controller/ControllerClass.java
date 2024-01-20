@@ -69,6 +69,12 @@ public class ControllerClass {
                 case LIST:
                    view.printAllStudents(model.getStudents());
                    break;
+                case DELETE:
+                //String id = view.prompt("Введите id студента:");
+                int id = Integer.parseInt(view.prompt("Введите id студента:"));
+                model.getStudentsHash().remove(id);
+                System.out.println("Студент с id: " + id + " удален из базы данных: ");
+                view.printAllStudents(model.getStudents());
             }
         }
     }

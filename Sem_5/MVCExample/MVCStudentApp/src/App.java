@@ -68,8 +68,8 @@ public class App {
 
         ControllerClass controller = new ControllerClass(modelHash, viewEng); // запуск в контроллер модели с HashMap и вьюшки на англ. языке
 
-        // controller.run();//.update();
-        controller.update();
+        controller.run();
+        // controller.update();
 
 
     }

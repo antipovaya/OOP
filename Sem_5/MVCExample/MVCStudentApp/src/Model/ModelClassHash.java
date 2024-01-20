@@ -27,6 +27,15 @@ public class ModelClassHash implements iGetModel{
         }
         return studentList;
     }
+    // Переопределяем метод удаления из интерфейа iGetModel
+    @Override
+    public void deleteStudent(int id) {
+        students.remove(id);
+    }
+
+    public HashMap<Integer, Student> getStudentsHash() {
+        return students;
+    }
 
    
 
