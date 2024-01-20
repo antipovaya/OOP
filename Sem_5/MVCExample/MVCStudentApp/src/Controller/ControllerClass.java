@@ -72,9 +72,14 @@ public class ControllerClass {
                 case DELETE:
                 //String id = view.prompt("Введите id студента:");
                 int id = Integer.parseInt(view.prompt("Введите id студента:"));
-                model.getStudentsHash().remove(id);
-                System.out.println("Студент с id: " + id + " удален из базы данных: ");
-                view.printAllStudents(model.getStudents());
+                if (model.getStudentsHash().containsKey(id) == false) {
+                    System.out.println("Студент с id: " + id + " отсутствует в списке");
+                }
+                else {
+                    model.getStudentsHash().remove(id);
+                    System.out.println("Студент с id: " + id + " удален из базы данных: ");
+                    view.printAllStudents(model.getStudents());
+                }
             }
         }
     }
