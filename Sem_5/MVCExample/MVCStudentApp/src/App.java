@@ -1,10 +1,12 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import Controller.ControllerClass;
 import Controller.Interfaces.iGetModel;
 import Controller.Interfaces.iGetView;
 import Model.ModelClassFile;
+import Model.ModelClassHash;
 import Model.ModelClassList;
 import Model.Core.Student;
 import View.ViewClass;
@@ -43,14 +45,28 @@ public class App {
         students1.add(student11);
         students1.add(student12);
 
+        HashMap<Integer, Student> students2 = new HashMap<>(); // формируем коллекцию студнтов, где id - ключ
+        students2.put(student1.getId(), student1);
+        students2.put(student2.getId(), student2);
+        students2.put(student3.getId(), student3);
+        students2.put(student4.getId(), student4);
+        students2.put(student5.getId(), student5);
+        students2.put(student6.getId(), student6);
+
+        
+
         iGetModel modelFile = new ModelClassFile("StudentDB.csv");
        // modelFile.saveAllStudentToFile(students1);
 
         iGetModel modelList = new ModelClassList(students1);
         iGetView viewSimple = new ViewClass();
-        iGetView viewEng = new ViewClassEng();
+        iGetView viewEng = new ViewClassEng(); // Создание экземпляра класса ViewClassEng
+        iGetModel modelHash = new ModelClassHash(students2); // Создание экземпляра класса ModelClassHash
+        
 
-        ControllerClass controller = new ControllerClass(modelList, viewEng);
+    
+
+        ControllerClass controller = new ControllerClass(modelHash, viewEng); // запуск в контроллер модели с HashMap и вьюшки на англ. языке
 
         // controller.run();//.update();
         controller.update();
